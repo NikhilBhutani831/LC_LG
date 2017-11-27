@@ -1,0 +1,4 @@
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="https://eehx-test.bi.em3.oraclecloud.com/xmlpserver/services/ExternalReportWSSService?WSDL"
+          uri="https://eehx-test.bi.em3.oraclecloud.com/xmlpserver/services/ExternalReportWSSService?WSDL"/>
+</catalog>

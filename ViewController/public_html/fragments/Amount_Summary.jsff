@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <af:panelStretchLayout id="psl1" startWidth="10px" endWidth="10px"
+                         bottomHeight="11px">
+    <f:facet name="start">
+      <af:panelGroupLayout id="pgl13" layout="vertical" halign="center"
+                           inlineStyle="background-color:Gray;"/>
+    </f:facet>
+    <f:facet name="end">
+      <af:panelGroupLayout id="pgl14" inlineStyle="background-color:Gray;"
+                           layout="vertical" halign="center"
+                           styleClass="AFStretchWidth"/>
+    </f:facet>
+    <f:facet name="bottom">
+      <af:panelGroupLayout id="pgl12"
+                           inlineStyle="background-color:rgb(49,49,49);"/>
+    </f:facet>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl3"
+                           inlineStyle="background-color:rgb(4,133,174);"
+                           layout="vertical">
+        <af:panelGroupLayout id="pgl15" layout="horizontal" halign="left"
+                             valign="middle" styleClass="AFStretchWidth"
+                             inlineStyle="margin:10.0px;">
+          <af:outputText value="Amount Summary" id="ot7"
+                         inlineStyle="color:White; font-size:x-large; font-weight:bold; margin:10px;"/>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="center">
+    
+           
+    <af:panelBox id="pb1" showDisclosure="false"
+                     inlineStyle="margin:10px; height:500.0px;">
+    <af:panelSplitter id="ps1" splitterPosition="150" orientation="vertical">
+         
+         
+       <f:facet name="first">  
+      
+        <af:panelCollection id="pc1" >
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+           <af:toolbar id="t2">
+                    <af:outputText value="Component Summary" id="ot11"
+                                   inlineStyle="font-size:large;"/>
+                  </af:toolbar>
+              </f:facet>                     
+          <f:facet name="statusbar"/>
+        
+        <af:table var="row" rowBandingInterval="0" id="t1" styleClass="AFStretchWidth" inlineStyle=" margin:10px;" 
+                            >
+          <af:column sortable="false" headerText="Component" id="c4">
+            <af:outputText value="#{row.col1}" id="ot4"/>
+          </af:column>
+          <af:column sortable="false" headerText="Used Amount" id="c2">
+            <af:outputText value="#{row.col2}" id="ot2"/>
+          </af:column>
+          <af:column sortable="false" headerText="Recovered Amount" id="c3">
+            <af:outputText value="#{row.col3}" id="ot1"/>
+          </af:column>
+          <af:column sortable="false" headerText="Remaining Amount" id="c1">
+            <af:outputText value="#{row.col4}" id="ot3"/>
+          </af:column>
+        </af:table>
+        </af:panelCollection>
+      
+      </f:facet>
+       <f:facet name="second">
+          
+           <af:panelCollection id="pc2" >
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+           <af:toolbar id="t4">
+                    <af:outputText value="Component Details" id="ot10"
+                                   inlineStyle="font-size:large;"/>
+                  </af:toolbar>
+              </f:facet>                     
+          <f:facet name="statusbar"/>
+        
+        <af:table var="row" rowBandingInterval="0" id="t3" styleClass="AFStretchWidth" 
+                            inlineStyle=" margin:10px;">
+          <af:column sortable="false" headerText="Component" id="c5">
+            <af:outputText value="#{row.col1}" id="ot5"/>
+          </af:column>
+          <af:column sortable="false" headerText="Used Amount" id="c6">
+            <af:outputText value="#{row.col2}" id="ot9"/>
+          </af:column>
+          <af:column sortable="false" headerText="Recovered Amount" id="c7">
+            <af:outputText value="#{row.col3}" id="ot6"/>
+          </af:column>
+          <af:column sortable="false" headerText="Remaining Amount" id="c8">
+            <af:outputText value="#{row.col4}" id="ot8"/>
+          </af:column>
+          <af:column sortable="false" headerText="Project No" id="c9">
+            <af:outputText value="#{row.col4}" id="ot12"/>
+          </af:column>
+          <af:column sortable="false" headerText="PO No" id="c10">
+            <af:outputText value="#{row.col4}" id="ot13"/>
+          </af:column>
+        </af:table>
+        </af:panelCollection>
+          
+          </f:facet>
+        </af:panelSplitter>
+
+            
+            
+        </af:panelBox>
+    
+       
+    </f:facet>
+   
+  </af:panelStretchLayout>
+</jsp:root>

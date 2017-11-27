@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="BankFacility_CreationPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="FacilityTxnVO1" RangeSize="25" DataControl="AMDataControl"
+              id="FacilityTxnVO1Iterator" Refresh="always"/>
+    <searchRegion Binds="FacilityFinancialVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="FacilityFinancialVO2Query"/>
+    <searchRegion Binds="FacilitySynBankVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="FacilitySynBankVO2Query"/>
+    <iterator id="FacilityLovVo1Iterator" Binds="FacilityLovVo1"
+              DataControl="AMDataControl" RangeSize="25"/>
+    <iterator Binds="FacilityAmtSumDetVO2" RangeSize="25"
+              DataControl="AMDataControl" id="FacilityAmtSumDetVO2Iterator"/>
+    <iterator Binds="FacilityAmtSumVO1" RangeSize="25"
+              DataControl="AMDataControl" id="FacilityAmtSumVO1Iterator"/>
+    <iterator Binds="FacilityHdrVO1" RangeSize="25" DataControl="AMDataControl"
+              id="FacilityHdrVO1Iterator"/>
+    <iterator Binds="FacilitySynBankVO2" RangeSize="25"
+              DataControl="AMDataControl" id="FacilitySynBankVO2Iterator">
+      <sortCriteria>
+        <sort attribute="FacilityType" ascending="true"/>
+      </sortCriteria>
+    </iterator>
+    <iterator Binds="FacilityExtnVO1" RangeSize="25" DataControl="AMDataControl"
+              id="FacilityExtnVO1Iterator"/>
+    <iterator id="FacilityBusinessUnitVO1Iterator"
+              Binds="FacilityBusinessUnitVO1" DataControl="AMDataControl"
+              RangeSize="-1"/>
+    <iterator Binds="FacilityExtnVO2" RangeSize="25" DataControl="AMDataControl"
+              id="FacilityExtnVO2Iterator"/>
+    <searchRegion Binds="FacilityExtnVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="FacilityExtnVO21Query"/>
+    <iterator id="FacilityFinancialVO2Iterator" Binds="FacilityFinancialVO2"
+              DataControl="AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="TxnId">
+      <AttrNames>
+        <Item Value="TxnId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="DocumentNumber">
+      <AttrNames>
+        <Item Value="DocumentNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="FacilityNumber">
+      <AttrNames>
+        <Item Value="FacilityNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="TotalAmount">
+      <AttrNames>
+        <Item Value="TotalAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="FacilityDate">
+      <AttrNames>
+        <Item Value="FacilityDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="ExpiryDate">
+      <AttrNames>
+        <Item Value="ExpiryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator"
+                     id="ExtendedExpiryDate">
+      <AttrNames>
+        <Item Value="ExtendedExpiryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="NumberOfExtends">
+      <AttrNames>
+        <Item Value="NumberOfExtends"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="BankName">
+      <AttrNames>
+        <Item Value="BankName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="BranchName">
+      <AttrNames>
+        <Item Value="BranchName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="AccountName">
+      <AttrNames>
+        <Item Value="AccountName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="CurrencyCode">
+      <AttrNames>
+        <Item Value="CurrencyCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator"
+                     id="BankAccountNumber">
+      <AttrNames>
+        <Item Value="BankAccountNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="ProjectName">
+      <AttrNames>
+        <Item Value="ProjectName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="ProjectNumber">
+      <AttrNames>
+        <Item Value="ProjectNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="Area">
+      <AttrNames>
+        <Item Value="Area"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="FacilityTxnVO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AMDataControl"/>
+    <tree IterBinding="FacilityFinancialVO2Iterator" id="FacilityFinancialVO2">
+      <nodeDefinition DefName="com.in.fsa.VO.FacilityFinancialVO"
+                      Name="FacilityFinancialVO20">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="TxnId"/>
+          <Item Value="FacilityType"/>
+          <Item Value="AmountOrg"/>
+          <Item Value="AmountExtd"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FacilityFinancialVO2Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="FacilitySynBankVO2Iterator" id="FacilitySynBankVO2">
+      <nodeDefinition DefName="com.in.fsa.VO.FacilitySynBankVO"
+                      Name="FacilitySynBankVO20">
+        <AttrNames>
+          <Item Value="FacilityType"/>
+          <Item Value="Id"/>
+          <Item Value="TxnId"/>
+          <Item Value="BankName"/>
+          <Item Value="Percentage"/>
+          <Item Value="Amount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FacilitySynBankVO2Iterator" id="CreateInsert2"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <methodAction id="saveorUpdate" InstanceName="AMDataControl.dataProvider"
+                  DataControl="AMDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="saveorUpdate"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.AMDataControl.methodResults.saveorUpdate_AMDataControl_dataProvider_saveorUpdate_result"/>
+    <tree IterBinding="FacilityAmtSumDetVO2Iterator" id="FacilityAmtSumDetVO2">
+      <nodeDefinition DefName="com.in.fsa.VO.FacilityAmtSumDetVO"
+                      Name="FacilityAmtSumDetVO20">
+        <AttrNames>
+          <Item Value="Component1"/>
+          <Item Value="UsedAmount"/>
+          <Item Value="RecoveredAmount"/>
+          <Item Value="RemainingAmount"/>
+          <Item Value="Id"/>
+          <Item Value="CompId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="FacilityAmtSumVO1Iterator" id="FacilityAmtSumVO1">
+      <nodeDefinition DefName="com.in.fsa.VO.FacilityAmtSumVO"
+                      Name="FacilityAmtSumVO10">
+        <AttrNames>
+          <Item Value="CompId"/>
+          <Item Value="Component1"/>
+          <Item Value="UsedAmount"/>
+          <Item Value="RecoveredAmount"/>
+          <Item Value="RemainingAmount"/>
+          <Item Value="TxnId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FacilityAmtSumVO1Iterator" id="CreateInsert3"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="FacilityAmtSumDetVO2Iterator" id="CreateInsert4"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AMDataControl"/>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="DocumentNumber1">
+      <AttrNames>
+        <Item Value="DocumentNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="FacilityNumber1">
+      <AttrNames>
+        <Item Value="FacilityNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="TotalAmount1">
+      <AttrNames>
+        <Item Value="TotalAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="Description1">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="FacilityDate1">
+      <AttrNames>
+        <Item Value="FacilityDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="ExpiryDate1">
+      <AttrNames>
+        <Item Value="ExpiryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator"
+                     id="ExtendedExpiryDate1">
+      <AttrNames>
+        <Item Value="ExtendedExpiryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="NumberOfExtends1">
+      <AttrNames>
+        <Item Value="NumberOfExtends"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="LegalEntity1">
+      <AttrNames>
+        <Item Value="LegalEntity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="BusinessUnit1">
+      <AttrNames>
+        <Item Value="BusinessUnit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="LastUpdatedBy">
+      <AttrNames>
+        <Item Value="LastUpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="LastUpdatedDate">
+      <AttrNames>
+        <Item Value="LastUpdatedDate"/>
+      </AttrNames>
+    </attributeValues>
+  <!--  <tree IterBinding="FacilityExtnVO1Iterator" id="FacilityExtnVO1">
+      <nodeDefinition DefName="com.in.fsa.VO.FacilityExtnVO"
+                      Name="FacilityExtnVO10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="TxnId"/>
+          <Item Value="FaccilityDate"/>
+          <Item Value="ExpiryDate"/>
+          <Item Value="Lc"/>
+          <Item Value="Lg"/>
+          <Item Value="Loan"/>
+          <Item Value="Overdraft"/>
+          <Item Value="Others"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="FacilityExtnVO2Iterator" id="FacilityExtnVO2">
+      <nodeDefinition DefName="com.in.fsa.VO.FacilityExtnVO"
+                      Name="FacilityExtnVO20">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="TxnId"/>
+          <Item Value="FaccilityDate"/>
+          <Item Value="ExpiryDate"/>
+          <Item Value="Lc"/>
+          <Item Value="Lg"/>
+          <Item Value="Loan"/>
+          <Item Value="Overdraft"/>
+          <Item Value="Others"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FacilityExtnVO2Iterator" id="CreateInsert5"
+            RequiresUpdateModel="true" Action="createInsertRow"/>-->
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="IsNew">
+      <AttrNames>
+        <Item Value="IsNew"/>
+      </AttrNames>
+    </attributeValues>
+    <!--<list IterBinding="FacilityTxnVO1Iterator" StaticList="false"
+          Uses="LOV_BusinessUnit" id="BusinessUnit" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="FacilityTxnVO1Iterator" StaticList="false"
+          Uses="LOV_LegalEntity" id="LegalEntity2" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="FacilityTxnVO1Iterator" id="BusinessUnit2"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="FacilityBusinessUnitVO1Iterator">
+      <AttrNames>
+        <Item Value="BusinessUnit"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="Id"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="LookupValue"/>
+      </ListDisplayAttrNames>
+    </list>-->
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="BusinessUnit">
+      <AttrNames>
+        <Item Value="BusinessUnit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityTxnVO1Iterator" id="LegalEntity">
+      <AttrNames>
+        <Item Value="LegalEntity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FacilityHdrVO1Iterator" id="IsComplete">
+      <AttrNames>
+        <Item Value="IsComplete"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="FacilityExtnVO2Iterator" id="FacilityExtnVO21">
+      <nodeDefinition DefName="com.in.fsa.VO.FacilityExtnVO"
+                      Name="FacilityExtnVO210">
+        <AttrNames>
+          <Item Value="FacilityType"/>
+          <Item Value="FacilityDate"/>
+          <Item Value="ExpiryDate"/>
+          <Item Value="Amount"/>
+          <Item Value="Id"/>
+          <Item Value="TxnId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FacilityExtnVO2Iterator" id="CreateInsert5"
+            InstanceName="AMDataControl.FacilityExtnVO2"
+            DataControl="AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

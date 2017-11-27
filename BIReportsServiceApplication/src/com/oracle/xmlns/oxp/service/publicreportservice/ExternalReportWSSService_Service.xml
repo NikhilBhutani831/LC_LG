@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns2="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname namespaceURI="http://xmlns.oracle.com/oxp/service/PublicReportService"
+                     localpart="ExternalReportWSSService"/>
+      <port-info>
+         <wsdl-port namespaceURI="http://xmlns.oracle.com/oxp/service/PublicReportService"
+                    localpart="ExternalReportWSSService"/>
+         <runtime/>
+         <policy-references>
+            <policy-reference category="security"
+                              uri="oracle/wss11_saml_token_with_message_protection_client_policy"/>
+         </policy-references>
+         <operations>
+            <operation name="getSecurityModel"/>
+            <operation name="getBIPHTTPSessionInterval"/>
+            <operation name="runReport"/>
+            <operation name="getReportDefinition"/>
+            <operation name="getTemplate"/>
+            <operation name="getReportSampleData"/>
+            <operation name="getXDOSchema"/>
+            <operation name="getReportParameters"/>
+            <operation name="getTemplateParameters"/>
+            <operation name="getFolderContents"/>
+            <operation name="getDeliveryServiceDefinition"/>
+            <operation name="deliveryService"/>
+            <operation name="validateLogin"/>
+            <operation name="hasReportAccess"/>
+            <operation name="isReportExist"/>
+            <operation name="isFolderExist"/>
+            <operation name="createReport"/>
+            <operation name="updateReportDefinition"/>
+            <operation name="createReportFolder"/>
+            <operation name="uploadTemplateForReport"/>
+            <operation name="updateTemplateForReport"/>
+            <operation name="removeTemplateForReport"/>
+            <operation name="uploadReportDataChunk"/>
+            <operation name="downloadReportDataChunk"/>
+            <operation name="uploadReportObject"/>
+            <operation name="deleteReport"/>
+            <operation name="deleteFolder"/>
+            <operation name="downloadReportObject"/>
+            <operation name="submitReport"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>

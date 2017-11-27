@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Model"
+  Version="11.1.1.66.73"
+  SeparateXMLFiles="true"
+  PackageName="model">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../Model.jpr"/>
+    <Attr Name="_NamedConnection" Value="LocalDBConnection"/>
+    <Attr Name="_appModuleNames0" Value="com.in.fsa.AppModule.AM"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="Java"/>
+  </DesignTime>
+  <Containee
+    Name="AppModule"
+    PackageName="com.in.fsa.AppModule"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="EO"
+    PackageName="com.in.fsa.EO"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="VO"
+    PackageName="com.in.fsa.VO"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

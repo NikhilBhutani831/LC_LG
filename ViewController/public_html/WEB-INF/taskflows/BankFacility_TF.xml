@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="BankFacility_TF">
+    <default-activity id="__1">routeFacility</default-activity>
+    <no-save-point/>
+    <input-parameter-definition id="__42">
+      <name id="__41">mode</name>
+      <value>#{pageFlowScope.mode}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__2">
+      <managed-bean-name id="__5">bankfacilitybean</managed-bean-name>
+      <managed-bean-class id="__4">com.in.fsa.beans.BankFacility</managed-bean-class>
+      <managed-bean-scope id="__3">view</managed-bean-scope>
+    </managed-bean>
+    <view id="BankFacility_Creation">
+      <page>/fragments/BankFacility_Creation.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__12">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="routeFacility">
+      <case>
+        <expression>#{pageFlowScope.mode=='edit'}</expression>
+        <outcome id="__60">edit</outcome>
+      </case>
+      <default-outcome>create</default-outcome>
+    </router>
+    <method-call id="Rollback">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome id="__51">
+        <fixed-outcome>editfacility</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Rollback1">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome id="__96">
+        <fixed-outcome>route</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert1">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__6">
+        <fixed-outcome>CreateInsert1</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__18">
+      <from-activity-id id="__19">CreateInsert</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome id="__21">CreateInsert</from-outcome>
+        <to-activity-id id="__22">CreateInsert1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__43">
+      <from-activity-id id="__44">routeFacility</from-activity-id>
+      <control-flow-case id="__46">
+        <from-outcome id="__47">create</from-outcome>
+        <to-activity-id id="__45">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__53">
+        <from-outcome id="__54">edit</from-outcome>
+        <to-activity-id id="__52">Rollback</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__55">
+      <from-activity-id id="__56">Rollback</from-activity-id>
+      <control-flow-case id="__59">
+        <from-outcome id="__58">editfacility</from-outcome>
+        <to-activity-id id="__57">BankFacility_Creation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__86">
+      <from-activity-id id="__87">BankFacility_Creation</from-activity-id>
+      <control-flow-case id="__89">
+        <from-outcome id="__90">return</from-outcome>
+        <to-activity-id id="__88">Rollback1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__91">
+      <from-activity-id id="__92">Rollback1</from-activity-id>
+      <control-flow-case id="__93">
+        <from-outcome id="__94">route</from-outcome>
+        <to-activity-id id="__95">routeFacility</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">CreateInsert1</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome id="__10">CreateInsert1</from-outcome>
+        <to-activity-id id="__9">BankFacility_Creation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

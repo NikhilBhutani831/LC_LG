@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.66.73" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/pages/BankFacility.jspx" usageId="view_BankFacilityPageDef"/>
+    <page path="/fragments/BankFacility_Creation.jsff"
+          usageId="view_BankFacility_CreationPageDef"/>
+    <page path="/WEB-INF/taskflows/BankFacility_TF.xml#BankFacility_TF@CreateInsert"
+          usageId="view_BankFacility_TF_BankFacility_TF_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflows/BankFacility_TF.xml#BankFacility_TF@Rollback"
+          usageId="view_BankFacility_TF_BankFacility_TF_RollbackPageDef"/>
+    <page path="/WEB-INF/taskflows/BankFacility_TF.xml#BankFacility_TF@Rollback1"
+          usageId="view_BankFacility_TF_BankFacility_TF_Rollback1PageDef"/>
+    <page path="/WEB-INF/taskflows/BankFacility_TF.xml#BankFacility_TF@CreateInsert1"
+          usageId="view_BankFacility_TF_BankFacility_TF_CreateInsert1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_BankFacilityPageDef" path="pages.BankFacilityPageDef"/>
+    <page id="view_BankFacility_CreationPageDef"
+          path="fragments.BankFacility_CreationPageDef"/>
+    <page id="view_BankFacility_TF_BankFacility_TF_CreateInsertPageDef"
+          path="taskflows.BankFacility_TF_BankFacility_TF_CreateInsertPageDef"/>
+    <page id="view_BankFacility_TF_BankFacility_TF_RollbackPageDef"
+          path="taskflows.BankFacility_TF_BankFacility_TF_RollbackPageDef"/>
+    <page id="view_BankFacility_TF_BankFacility_TF_Rollback1PageDef"
+          path="taskflows.BankFacility_TF_BankFacility_TF_Rollback1PageDef"/>
+    <page id="view_untitled1PageDef" path="pages.untitled1PageDef"/>
+    <page id="view_untitled1PageDef1" path="pages.untitled1PageDef1"/>
+    <page id="view_untitled1PageDef11" path="pages.untitled1PageDef11"/>
+    <page id="view_BankFacility_TF_BankFacility_TF_CreateInsert1PageDef"
+          path="taskflows.BankFacility_TF_BankFacility_TF_CreateInsert1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AMDataControl" Package="com.in.fsa.AppModule"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AMLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

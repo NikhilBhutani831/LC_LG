@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.in.fsa.AppModule.AM">
+      <AppModuleConfig DeployPlatform="LOCAL" JDBCName="LocalDBConnection" jbo.project="model.Model" name="AMLocal" ApplicationName="com.in.fsa.AppModule.AM">
+         <Security AppModuleJndiName="com.in.fsa.AppModule.AM"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.Model" name="AMShared" ApplicationName="com.in.fsa.AppModule.AM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="com.in.fsa.AppModule.AM"/>
+         <Custom JDBCDataSource="apex"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

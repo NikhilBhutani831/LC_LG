@@ -1,0 +1,1396 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <af:panelStretchLayout id="psl1" startWidth="10px" endWidth="10px"
+                         bottomHeight="11px">
+    <f:facet name="bottom">
+      <af:panelGroupLayout id="pgl12"
+                           inlineStyle="background-color:rgb(49,49,49);"/>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelGroupLayout id="pgl13" layout="vertical" halign="center"
+                           inlineStyle="background-color:Gray;"/>
+    </f:facet>
+    <f:facet name="end">
+      <af:panelGroupLayout id="pgl14" inlineStyle="background-color:Gray;"
+                           layout="vertical" halign="center"
+                           styleClass="AFStretchWidth"/>
+    </f:facet>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl3"
+                           inlineStyle="background-color:rgb(4,133,174);"
+                           layout="vertical">
+        <af:panelGroupLayout id="pgl15" layout="horizontal" halign="left"
+                             valign="middle" styleClass="AFStretchWidth"
+                             inlineStyle="margin:10.0px;">
+          <af:outputText value="Facility" id="ot7"
+                         inlineStyle="color:White; font-size:x-large; font-weight:bold; margin:10px;"/>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="vertical"
+                           styleClass="AFStretchWidth"
+                           inlineStyle="height:900px; background-color:White; margin:10.0px;"
+                           >
+        <af:panelGroupLayout id="pgl16" layout="horizontal">
+        <af:inputText label="Facility Number" id="it38"
+                                binding="#{viewScope.bankfacilitybean.searchInputText}"
+                                autoSubmit="true"/>
+                  <af:commandImageLink text="Search" id="cil1"
+                                       
+                                       immediate="true" 
+                                       actionListener="#{viewScope.bankfacilitybean.searchFacility}"
+                                       action="return">
+                <af:setPropertyListener from="edit" to="#{pageFlowScope.mode}"
+                                        type="action"/>
+              </af:commandImageLink>                    
+              </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl6" layout="horizontal" styleClass="AFStretchWidth">
+          <af:panelBox id="pb1" showDisclosure="false"
+                       inlineStyle="color:rgb(0,60,180);" styleClass="AFStretchWidth"
+                       text="Facility Basic Information">
+            <f:facet name="toolbar"/>
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+            <!--  <af:panelGroupLayout id="pgl4" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:10px;">
+                <af:panelFormLayout id="pfl1">
+                  <f:facet name="footer"/>
+                  <af:inputText label="Facility Number:" id="it1"/>
+                  <af:inputText label="Description:" id="it2"/>
+                  <af:inputText label="Commission:" id="it3"/>
+                  <af:inputDate label="Facility Date:" id="id1"/>
+                </af:panelFormLayout>
+                
+                
+              </af:panelGroupLayout>
+              <af:panelGroupLayout id="pgl11" layout="vertical"
+                                   inlineStyle="margin:7.0px;">
+                <af:panelFormLayout id="pfl2">
+                  <f:facet name="footer"/>
+                  <af:spacer width="10" height="20" id="s1"/>
+                  <af:selectOneChoice label="Legal Entity" id="soc1"></af:selectOneChoice>
+                  <af:selectOneChoice label="Business Unit" id="soc2"></af:selectOneChoice>
+                  <af:inputDate label="Expiry Date:" id="id2"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+              <af:panelGroupLayout id="pgl10" layout="vertical"
+                                   inlineStyle="margin:7.0px;">
+                <af:panelFormLayout id="pfl4">
+                  <f:facet name="footer"/>
+                  <af:inputText label="Total Amount:" id="it4"/>
+                  <af:inputText label="Document No:" id="it5"/>
+                  <af:inputText label="Number of Extends:" id="it6"/>
+                  <af:inputDate label="Extend Expiry Date:" id="id3"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>-->
+              
+              
+              <af:panelGroupLayout id="pgl29" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:10px;">
+                <af:panelFormLayout id="pfl7"
+                                    binding="#{viewScope.bankfacilitybean.facilityBasicForm}"
+                                    partialTriggers="cb10 cil1">
+                  <af:inputText value="#{bindings.IsComplete.inputValue}"
+                                label="#{bindings.IsComplete.hints.label}"
+                                required="#{bindings.IsComplete.hints.mandatory}"
+                                columns="#{bindings.IsComplete.hints.displayWidth}"
+                                maximumLength="#{bindings.IsComplete.hints.precision}"
+                                shortDesc="#{bindings.IsComplete.hints.tooltip}"
+                                id="it1"
+                                binding="#{viewScope.bankfacilitybean.isCompleteBind}"
+                                rendered="false">
+                    <f:validator binding="#{bindings.IsComplete.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.TxnId.inputValue}"
+                              label="#{bindings.TxnId.hints.label}"
+                              required="#{bindings.TxnId.hints.mandatory}"
+                              columns="20"
+                              maximumLength="#{bindings.TxnId.hints.precision}"
+                              shortDesc="#{bindings.TxnId.hints.tooltip}"
+                              id="it15" partialTriggers="cb10" rendered="false">
+                  <f:validator binding="#{bindings.TxnId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.TxnId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.FacilityNumber.inputValue}"
+                              label="#{bindings.FacilityNumber.hints.label}"
+                              
+                              columns="20"
+                              maximumLength="#{bindings.FacilityNumber.hints.precision}"
+                              shortDesc="#{bindings.FacilityNumber.hints.tooltip}"
+                              id="it19" autoSubmit="true"
+                              partialTriggers="cil1"
+                              valueChangeListener="#{viewScope.bankfacilitybean.fcltyNmbrVcl}"
+                              binding="#{viewScope.bankfacilitybean.facInputBind}"
+                              disabled="#{bindings.IsComplete.inputValue eq 'Y'}">
+                 
+                </af:inputText>
+                     <af:inputText value="#{bindings.Description.inputValue}"
+                              label="#{bindings.Description.hints.label}"
+                              required="#{bindings.Description.hints.mandatory}"
+                              columns="20"
+                              maximumLength="#{bindings.Description.hints.precision}"
+                              shortDesc="#{bindings.Description.hints.tooltip}"
+                              id="it20" autoSubmit="true"
+                              disabled="#{bindings.IsComplete.inputValue eq 'Y'}">
+                  <f:validator binding="#{bindings.Description.validator}"/>
+                </af:inputText>
+                
+                 <af:inputDate value="#{bindings.FacilityDate.inputValue}"
+                              label="#{bindings.FacilityDate.hints.label}"
+                              required="#{bindings.FacilityDate.hints.mandatory}"
+                              shortDesc="#{bindings.FacilityDate.hints.tooltip}"
+                              autoSubmit="true"
+                              id="id4"
+                              valueChangeListener="#{viewScope.bankfacilitybean.facDateVcl}"
+                              disabled="#{bindings.IsComplete.inputValue eq 'Y'}" >
+                  <f:validator binding="#{bindings.FacilityDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.FacilityDate.format}"/>
+                </af:inputDate>
+                </af:panelFormLayout>
+                </af:panelGroupLayout>
+              <af:spacer width="170" height="10" id="s1"/>
+              <af:panelGroupLayout id="pgl30" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:10px;">
+                <af:panelFormLayout id="pfl8">
+                <!-- <af:inputText value="#{bindings.LegalEntity.inputValue}"
+                              label="#{bindings.LegalEntity.hints.label}"
+                              required="#{bindings.LegalEntity.hints.mandatory}"
+                              columns="20"
+                              maximumLength="#{bindings.LegalEntity.hints.precision}"
+                              shortDesc="#{bindings.LegalEntity.hints.tooltip}"
+                              autoSubmit="true"
+                              id="it13">
+                  <f:validator binding="#{bindings.LegalEntity.validator}"/>
+                </af:inputText>
+                 -->
+                  <!--<af:selectOneChoice value="#{bindings.LegalEntity2.inputValue}"
+                                      label="#{bindings.LegalEntity2.label}"
+                                      required="#{bindings.LegalEntity2.hints.mandatory}"
+                                      shortDesc="#{bindings.LegalEntity2.hints.tooltip}"
+                                      id="soc12"
+                                      autoSubmit="true"
+                                      valueChangeListener="#{viewScope.bankfacilitybean.legalEntityVcl}"
+                                      unselectedLabel=""
+                                      contentStyle="width:150px">
+                    <f:selectItems value="#{bindings.LegalEntity2.items}"
+                                   id="si12"/>
+                  </af:selectOneChoice>-->
+                  <af:selectOneChoice label="Legal Entity"
+                                      value="#{bindings.LegalEntity.inputValue}"
+                                      id="soc15"
+                                      autoSubmit="true"
+                                      contentStyle="width:150px"
+                                      disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                                      required="true" immediate="true">
+                    <af:selectItem label="FSA LE" value="FSA LE" id="si16"/>
+                  </af:selectOneChoice>
+                
+                  <af:selectOneChoice label="Business Unit"
+                                      value="#{bindings.BusinessUnit.inputValue}"
+                                      id="soc13"
+                                      autoSubmit="true"
+                                      contentStyle="width:150px"
+                                      disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                                      required="true">
+                    <af:selectItem label="FSA Head Office" value="FSA" id="si13"/>
+                    <af:selectItem label="FSA Riyadh Branch" value="ABC" id="si15"/>
+                  </af:selectOneChoice>
+                  <!--<af:selectOneChoice value="#{bindings.BusinessUnit2.inputValue}"
+                                      label="#{bindings.BusinessUnit2.label}"
+                                      required="#{bindings.BusinessUnit2.hints.mandatory}"
+                                      shortDesc="#{bindings.BusinessUnit2.hints.tooltip}"
+                                      id="soc14"
+                                      binding="#{viewScope.bankfacilitybean.buBindVar}"
+                                      autoSubmit="true"
+                                      contentStyle="width:150px">
+                    <f:selectItems value="#{bindings.BusinessUnit2.items}"
+                                   id="si14"/>
+                  </af:selectOneChoice>-->
+                  <af:inputDate value="#{bindings.ExpiryDate.inputValue}"
+                              label="#{bindings.ExpiryDate.hints.label}"
+                              required="#{bindings.ExpiryDate.hints.mandatory}"
+                              shortDesc="#{bindings.ExpiryDate.hints.tooltip}"
+                              autoSubmit="true"
+                              id="id6"
+                              disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                               valueChangeListener="#{viewScope.bankfacilitybean.expiryDateVcl}"
+                               binding="#{viewScope.bankfacilitybean.expryDateBind}">
+                  <f:validator binding="#{bindings.ExpiryDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.ExpiryDate.format}"/>
+                </af:inputDate>
+                </af:panelFormLayout>
+                </af:panelGroupLayout>
+              <af:spacer width="120" height="10" id="s5"/>
+              <af:panelGroupLayout id="pgl28" layout="vertical"
+                                   inlineStyle="margin:7.0px;">
+              <af:panelFormLayout id="pfl3">
+                <af:inputText value="#{bindings.TotalAmount.inputValue}"
+                              label="#{bindings.TotalAmount.hints.label}"
+                              required="#{bindings.TotalAmount.hints.mandatory}"
+                              columns="20"
+                              maximumLength="#{bindings.TotalAmount.hints.precision}"
+                              shortDesc="#{bindings.TotalAmount.hints.tooltip}"
+                              autoSubmit="true"
+                              disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                              id="it17">
+                  <f:validator binding="#{bindings.TotalAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.TotalAmount.format}"
+                                    />
+                </af:inputText>
+                <af:inputText value="#{bindings.DocumentNumber.inputValue}"
+                              label="Documet Number"
+                              required="#{bindings.DocumentNumber.hints.mandatory}"
+                              columns="20"
+                              autoSubmit="true"
+                              maximumLength="#{bindings.DocumentNumber.hints.precision}"
+                              shortDesc="#{bindings.DocumentNumber.hints.tooltip}"
+                              id="it21" partialTriggers="cb10"
+                              binding="#{viewScope.bankfacilitybean.docNum}"
+                              readOnly="true">
+                  <f:validator binding="#{bindings.DocumentNumber.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.DocumentNumber.format}"/>
+                </af:inputText>
+                
+                
+           
+               <af:inputText value="#{bindings.NumberOfExtends.inputValue}"
+                              label="#{bindings.NumberOfExtends.hints.label}"
+                              required="#{bindings.NumberOfExtends.hints.mandatory}"
+                              columns="20"
+                              disabled="true"
+                              maximumLength="#{bindings.NumberOfExtends.hints.precision}"
+                              shortDesc="#{bindings.NumberOfExtends.hints.tooltip}"
+                              id="it18"
+                              autoSubmit="true"
+                             binding="#{viewScope.bankfacilitybean.noExtends}">
+                  <f:validator binding="#{bindings.NumberOfExtends.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.NumberOfExtends.format}"/>
+                </af:inputText>
+               
+               
+                <af:inputDate value="#{bindings.ExtendedExpiryDate.inputValue}"
+                              label="#{bindings.ExtendedExpiryDate.hints.label}"
+                              required="#{bindings.ExtendedExpiryDate.hints.mandatory}"
+                              shortDesc="#{bindings.ExtendedExpiryDate.hints.tooltip}"
+                              autoSubmit="true"
+                              id="id5">
+                  <f:validator binding="#{bindings.ExtendedExpiryDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.ExtendedExpiryDate.format}"/>
+                </af:inputDate>
+                
+              </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </af:panelBox>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl8" layout="horizontal" styleClass="AFStretchWidth">
+          <af:panelBox id="pb6" showDisclosure="false"
+                        styleClass="AFStretchWidth"
+                       text="Facility Related Information">
+            <f:facet name="toolbar"/>
+            <af:panelGroupLayout id="pgl5" layout="horizontal">
+            <af:panelGroupLayout id="pgl17" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:7.0px;">
+              <af:panelFormLayout id="pfl1">
+             <!--   <af:inputText value="#{bindings.BankName.inputValue}"
+                              label="#{bindings.BankName.hints.label}"
+                              required="#{bindings.BankName.hints.mandatory}"
+                              columns="#{bindings.BankName.hints.displayWidth}"
+                              maximumLength="#{bindings.BankName.hints.precision}"
+                              autoSubmit="true"
+                              shortDesc="#{bindings.BankName.hints.tooltip}"
+                              id="it23">
+                  <f:validator binding="#{bindings.BankName.validator}"/>
+                </af:inputText>-->
+                
+                <af:selectOneChoice id="soc6"
+                                              value="#{bindings.BankName.inputValue}"
+                                              autoSubmit="true" immediate="true"
+                                    label="Bank Name"
+                                    binding="#{viewScope.bankfacilitybean.bankNameLov}"
+                                    valueChangeListener="#{viewScope.bankfacilitybean.bankNameLovVcl}"
+                                    contentStyle="width:170px"
+                                    disabled="#{bindings.IsComplete.inputValue eq 'Y'}">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.bankList}"
+                                           id="si7"/>
+                          </af:selectOneChoice>
+              <!--  <af:inputText value="#{bindings.BranchName.inputValue}"
+                              label="#{bindings.BranchName.hints.label}"
+                              required="#{bindings.BranchName.hints.mandatory}"
+                              columns="#{bindings.BranchName.hints.displayWidth}"
+                              maximumLength="#{bindings.BranchName.hints.precision}"
+                              autoSubmit="true"
+                              shortDesc="#{bindings.BranchName.hints.tooltip}"
+                              id="it6">
+                  <f:validator binding="#{bindings.BranchName.validator}"/>
+                </af:inputText>-->
+                
+                  <af:selectOneChoice id="soc5"
+                                              value="#{bindings.BranchName.inputValue}"
+                                              autoSubmit="true" immediate="true"
+                                    label="Branch Name"
+                                    binding="#{viewScope.bankfacilitybean.branchNameLov}"
+                                    valueChangeListener="#{viewScope.bankfacilitybean.branchNameLovVcl}"
+                                      contentStyle="width:170px"
+                                      disabled="#{bindings.IsComplete.inputValue eq 'Y'}">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.branchNameList}"
+                                           id="si5"/>
+                          </af:selectOneChoice>
+                          
+              <!--  <af:inputText value="#{bindings.AccountName.inputValue}"
+                              label="#{bindings.AccountName.hints.label}"
+                              required="#{bindings.AccountName.hints.mandatory}"
+                              columns="#{bindings.AccountName.hints.displayWidth}"
+                              maximumLength="#{bindings.AccountName.hints.precision}"
+                              shortDesc="#{bindings.AccountName.hints.tooltip}"
+                              autoSubmit="true"
+                              id="it5">
+                  <f:validator binding="#{bindings.AccountName.validator}"/>
+                </af:inputText>-->
+                <af:selectOneChoice id="soc7"
+                                              value="#{bindings.AccountName.inputValue}"
+                                              autoSubmit="true" immediate="true"
+                                    label="Account Name"
+                                    binding="#{viewScope.bankfacilitybean.accntNameLov}"
+                                    valueChangeListener="#{viewScope.bankfacilitybean.accountNameVcl}"
+                                      contentStyle="width:170px"
+                                      disabled="#{bindings.IsComplete.inputValue eq 'Y'}">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.accountNameList}"
+                                           id="si6"/>
+                          </af:selectOneChoice>
+                
+                
+                
+              </af:panelFormLayout>
+              </af:panelGroupLayout>
+              <af:spacer width="100" height="10" id="s6"/>
+              <af:panelGroupLayout id="pgl10" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:7.0px;">
+              <af:panelFormLayout id="pfl2">
+             <!-- <af:inputText value="#{bindings.CurrencyCode.inputValue}"
+                              label="#{bindings.CurrencyCode.hints.label}"
+                              required="#{bindings.CurrencyCode.hints.mandatory}"
+                              columns="32"
+                              maximumLength="#{bindings.CurrencyCode.hints.precision}"
+                              shortDesc="#{bindings.CurrencyCode.hints.tooltip}"
+                              autoSubmit="true"
+                              id="it2">
+                  <f:validator binding="#{bindings.CurrencyCode.validator}"/>
+                </af:inputText>-->
+                <af:selectOneChoice id="soc8"
+                                              value="#{bindings.CurrencyCode.inputValue}"
+                                              autoSubmit="true" immediate="true"
+                                    label="Currency Code"
+                                    binding="#{viewScope.bankfacilitybean.crrncyCodeLov}"
+                                      contentStyle="width:170px"
+                                      disabled="#{bindings.IsComplete.inputValue eq 'Y'}">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.currencyCodeList}"
+                                           id="si8"/>
+                          </af:selectOneChoice>
+                          
+                <!--<af:inputText value="#{bindings.BankAccountNumber.inputValue}"
+                              label="#{bindings.BankAccountNumber.hints.label}"
+                              required="#{bindings.BankAccountNumber.hints.mandatory}"
+                              autoSubmit="true"
+                              columns="#{bindings.BankAccountNumber.hints.displayWidth}"
+                              maximumLength="#{bindings.BankAccountNumber.hints.precision}"
+                              shortDesc="#{bindings.BankAccountNumber.hints.tooltip}"
+                              id="it4">
+                  <f:validator binding="#{bindings.BankAccountNumber.validator}"/>
+                </af:inputText>-->
+                
+                 <af:selectOneChoice id="soc9"
+                                              value="#{bindings.BankAccountNumber.inputValue}"
+                                              autoSubmit="true" immediate="true"
+                                    label="Bank Account Number"
+                                    binding="#{viewScope.bankfacilitybean.accountNumberLov}"
+                                   disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                                      contentStyle="width:170px">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.accountNumberList}"
+                                           id="si9"/>
+                          </af:selectOneChoice>
+                
+                <af:inputText value="#{bindings.Area.inputValue}"
+                              label="#{bindings.Area.hints.label}"
+                              required="#{bindings.Area.hints.mandatory}"
+                              columns="#{bindings.Area.hints.displayWidth}"
+                              maximumLength="#{bindings.Area.hints.precision}"
+                              shortDesc="#{bindings.Area.hints.tooltip}"
+                              autoSubmit="true"
+                              contentStyle="width:170px"
+                              disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                              id="it22">
+                  <f:validator binding="#{bindings.Area.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+              </af:panelGroupLayout>
+              <af:spacer width="100" height="10" id="s7"/>
+              <af:panelGroupLayout id="pgl11" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:7.0px;">
+              <af:panelFormLayout id="pfl4">
+             <!-- <af:inputText value="#{bindings.ProjectName.inputValue}"
+                              label="#{bindings.ProjectName.hints.label}"
+                              required="#{bindings.ProjectName.hints.mandatory}"
+                              columns="20"
+                              maximumLength="#{bindings.ProjectName.hints.precision}"
+                              shortDesc="#{bindings.ProjectName.hints.tooltip}"
+                              autoSubmit="true"
+                              id="it1">
+                  <f:validator binding="#{bindings.ProjectName.validator}"/>
+                </af:inputText>-->
+                  <af:selectOneChoice id="soc10"
+                                              value="#{bindings.ProjectName.inputValue}"
+                                              autoSubmit="true" immediate="true"
+                                    label="Project Name"
+                                    binding="#{viewScope.bankfacilitybean.projectNameLov}"
+                                   disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                                      contentStyle="width:170px"
+                                      valueChangeListener="#{viewScope.bankfacilitybean.projectNameLovVcl}">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.projectNamesList}"
+                                           id="si10"/>
+                          </af:selectOneChoice>
+               <!-- <af:inputText value="#{bindings.ProjectNumber.inputValue}"
+                              label="#{bindings.ProjectNumber.hints.label}"
+                              required="#{bindings.ProjectNumber.hints.mandatory}"
+                              columns="20"
+                              maximumLength="#{bindings.ProjectNumber.hints.precision}"
+                              shortDesc="#{bindings.ProjectNumber.hints.tooltip}"
+                              autoSubmit="true"
+                              id="it3">
+                  <f:validator binding="#{bindings.ProjectNumber.validator}"/>
+                </af:inputText>-->
+                
+                 <af:selectOneChoice id="soc11"
+                                              value="#{bindings.ProjectNumber.inputValue}"
+                                              autoSubmit="true" immediate="true"
+                                    label="Project Number"
+                                    binding="#{viewScope.bankfacilitybean.projectNumberLov}"
+                                   disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                                      contentStyle="width:170px"
+                                     >
+                            <f:selectItems value="#{viewScope.bankfacilitybean.projectNumberList}"
+                                           id="si11"/>
+                          </af:selectOneChoice>
+                
+              </af:panelFormLayout>
+              </af:panelGroupLayout>
+              
+           <!--   <af:panelGroupLayout id="pgl4" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:7.0px;">
+                <af:panelFormLayout>
+                  <af:selectOneChoice label="Bank Name:" id="soc3"></af:selectOneChoice>
+                  <af:selectOneChoice label="Branch Name:" id="soc4"></af:selectOneChoice>
+                  <af:selectOneChoice label="Account Name:" id="soc5"></af:selectOneChoice>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+              <af:panelGroupLayout id="pgl9" layout="vertical"
+                                   inlineStyle="margin:18.0px;">
+                <af:panelFormLayout id="pfl5">
+                  <f:facet name="footer"/>
+                  <af:inputText label="Currency Code:" id="it7"/>
+                  <af:inputText label="Account No:" id="it8"/>
+                  <af:inputText label="Area:" id="it9"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+              <af:panelGroupLayout id="pgl18" layout="vertical"
+                                   inlineStyle="margin:18.0px;">
+                <af:panelFormLayout id="pfl6">
+                  <f:facet name="footer"/>
+                  <af:selectOneChoice label="Project Name:" id="soc7"></af:selectOneChoice>
+                  <af:inputText label="Project No:" id="it14"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>-->
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl31" layout="horizontal"
+                                 halign="center">
+              <af:commandButton text="Complete" id="cb6"
+              disabled="#{bindings.IsComplete.inputValue eq 'Y'}"
+                                actionListener="#{viewScope.bankfacilitybean.completeBtnActnLsnr}"/>
+            </af:panelGroupLayout>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      <!--  <af:panelGroupLayout id="pgl16" styleClass="AFStretchWidth"
+                             layout="vertical">-->
+          <af:panelGroupLayout id="pgl7" layout="horizontal" styleClass="AFStretchWidth">
+            <af:panelBox id="pb2" showDisclosure="false"
+                         inlineStyle="margin:5px;" styleClass="AFStretchWidth"
+                         text="Facility Financial">
+              <f:facet name="toolbar"/>
+                         <af:panelGroupLayout id="pgl4" layout="horizontal" styleClass="AFStretchWidth">
+
+                 <!-- <af:table var="row" rowBandingInterval="0" id="t1"
+                            styleClass="AFStretchWidth" width="630px"
+                            inlineStyle="height:150.0px; margin:10px;">
+                    <af:column sortable="false" headerText="Type" id="c4">
+                      <af:outputText value="#{row.col1}" id="ot3"/>
+                    </af:column>
+                    <af:column sortable="false" headerText="Orignal Amount"
+                               id="c2">
+                      <af:outputText value="#{row.col2}" id="ot1"/>
+                    </af:column>
+                    <af:column sortable="false" headerText="Cap Amount" id="c1">
+                      <af:outputText value="#{row.col3}" id="ot2"/>
+                    </af:column>
+                    <af:column sortable="false" headerText="Amount After Extend"
+                               id="c3">
+                      <af:outputText value="#{row.col4}" id="ot4"/>
+                    </af:column>
+                  </af:table>-->
+              <af:panelCollection id="pc3"
+                                  styleClass="AFStretchWidth"
+                                  inlineStyle="height:210px;">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t9">
+                    <af:commandToolbarButton text="Add New" actionListener="#{bindings.CreateInsert1.execute}"
+                    immediate="true"
+                                             id="ctb4"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.FacilityFinancialVO2.collectionModel}"
+                          var="row"
+                          rows="#{bindings.FacilityFinancialVO2.rangeSize}"
+                          emptyText="#{bindings.FacilityFinancialVO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.FacilityFinancialVO2.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.FacilityFinancialVO2Query.queryDescriptor}"
+                          queryListener="#{bindings.FacilityFinancialVO2Query.processQuery}"
+                          filterVisible="true" varStatus="vs" id="t1"
+                         
+                          partialTriggers="::ctb4 :::cb10"
+                          columnStretching="column:c13"
+                          binding="#{viewScope.bankfacilitybean.facilityFinancialTableBind}">
+                  <af:column sortProperty="#{bindings.FacilityFinancialVO2.hints.Id.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.FacilityFinancialVO2.hints.Id.label}"
+                             id="c1" rendered="false">
+                    <af:inputText value="#{row.bindings.Id.inputValue}"
+                                  label="#{bindings.FacilityFinancialVO2.hints.Id.label}"
+                                  required="#{bindings.FacilityFinancialVO2.hints.Id.mandatory}"
+                                  columns="#{bindings.FacilityFinancialVO2.hints.Id.displayWidth}"
+                                  maximumLength="#{bindings.FacilityFinancialVO2.hints.Id.precision}"
+                                  shortDesc="#{bindings.FacilityFinancialVO2.hints.Id.tooltip}"
+                                  id="it24">
+                      <f:validator binding="#{row.bindings.Id.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.FacilityFinancialVO2.hints.Id.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.FacilityFinancialVO2.hints.TxnId.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.FacilityFinancialVO2.hints.TxnId.label}"
+                             id="c2" rendered="false">
+                    <af:inputText value="#{row.bindings.TxnId.inputValue}"
+                                  label="#{bindings.FacilityFinancialVO2.hints.TxnId.label}"
+                                  required="#{bindings.FacilityFinancialVO2.hints.TxnId.mandatory}"
+                                  columns="#{bindings.FacilityFinancialVO2.hints.TxnId.displayWidth}"
+                                  maximumLength="#{bindings.FacilityFinancialVO2.hints.TxnId.precision}"
+                                  shortDesc="#{bindings.FacilityFinancialVO2.hints.TxnId.tooltip}"
+                                  id="it7">
+                      <f:validator binding="#{row.bindings.TxnId.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.FacilityFinancialVO2.hints.TxnId.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <!-- <af:column sortProperty="#{bindings.FacilityFinancialVO2.hints.FacilityType.name}"
+                               filterable="true" sortable="true"
+                               headerText="Facility Type" id="c13">
+                      <af:inputText value="#{row.bindings.FacilityType.inputValue}"
+                                    label="#{bindings.FacilityFinancialVO2.hints.FacilityType.label}"
+                                    required="#{bindings.FacilityFinancialVO2.hints.FacilityType.mandatory}"
+                                    columns="#{bindings.FacilityFinancialVO2.hints.FacilityType.displayWidth}"
+                                    maximumLength="#{bindings.FacilityFinancialVO2.hints.FacilityType.precision}"
+                                    shortDesc="#{bindings.FacilityFinancialVO2.hints.FacilityType.tooltip}"
+                                    id="it8">
+                        <f:validator binding="#{row.bindings.FacilityType.validator}"/>
+                      </af:inputText>
+                    </af:column>-->
+                  <af:column headerText="#{bindings.FacilityFinancialVO2.hints.FacilityType.label}"
+                             id="c13" filterable="true">
+                   <!-- <af:selectOneChoice value="#{row.bindings.FacilityType.inputValue}"
+                                        label="#{row.bindings.FacilityType.label}"
+                                        required="#{bindings.FacilityFinancialVO2.hints.FacilityType.mandatory}"
+                                        shortDesc="#{bindings.FacilityFinancialVO2.hints.FacilityType.tooltip}"
+                                        id="soc1" autoSubmit="true"
+                                        valueChangeListener="#{viewScope.bankfacilitybean.facFinFacTypeVcl}">
+                      <f:selectItems value="#{row.bindings.FacilityType.items}"
+                                     id="si1"/>
+                    </af:selectOneChoice>-->
+                    <af:selectOneChoice value="#{row.bindings.FacilityType.inputValue}"
+                                        label="#{row.bindings.FacilityType.label}"
+                                        required="#{bindings.FacilityFinancialVO2.hints.FacilityType.mandatory}"
+                                        shortDesc="#{bindings.FacilityFinancialVO2.hints.FacilityType.tooltip}"
+                                        id="soc1"
+                                        autoSubmit="true"
+                                        valueChangeListener="#{viewScope.bankfacilitybean.facFinFacTypeVcl}"
+                                        binding="#{viewScope.bankfacilitybean.facFinFacTypeBind}">
+                      <f:selectItems value="#{row.bindings.FacilityType.items}"
+                                     id="si1"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.FacilityFinancialVO2.hints.AmountOrg.name}"
+                             filterable="true" sortable="true"
+                             headerText="Limit Amount" id="c4">
+                    <af:inputText value="#{row.bindings.AmountOrg.inputValue}"
+                                  label="#{bindings.FacilityFinancialVO2.hints.AmountOrg.label}"
+                                  required="#{bindings.FacilityFinancialVO2.hints.AmountOrg.mandatory}"
+                                  columns="#{bindings.FacilityFinancialVO2.hints.AmountOrg.displayWidth}"
+                                  maximumLength="#{bindings.FacilityFinancialVO2.hints.AmountOrg.precision}"
+                                  shortDesc="#{bindings.FacilityFinancialVO2.hints.AmountOrg.tooltip}"
+                                  autoSubmit="true"
+                                  id="it9">
+                      <f:validator binding="#{row.bindings.AmountOrg.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.FacilityFinancialVO2.hints.AmountOrg.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.FacilityFinancialVO2.hints.AmountExtd.name}"
+                             filterable="true" sortable="true"
+                             headerText="Amount After Extend" id="c3">
+                    <af:inputText value="#{row.bindings.AmountExtd.inputValue}"
+                                  label="#{bindings.FacilityFinancialVO2.hints.AmountExtd.label}"
+                                  required="#{bindings.FacilityFinancialVO2.hints.AmountExtd.mandatory}"
+                                  columns="#{bindings.FacilityFinancialVO2.hints.AmountExtd.displayWidth}"
+                                  maximumLength="#{bindings.FacilityFinancialVO2.hints.AmountExtd.precision}"
+                                  shortDesc="#{bindings.FacilityFinancialVO2.hints.AmountExtd.tooltip}"
+                                  autoSubmit="true"
+                                  id="it14" disabled="true">
+                      <f:validator binding="#{row.bindings.AmountExtd.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.FacilityFinancialVO2.hints.AmountExtd.format}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelGroupLayout>
+               
+            </af:panelBox>
+            </af:panelGroupLayout>
+          <!--</af:panelGroupLayout>-->
+        <!--<af:inputText value="#{bindings.IsNew.inputValue}" simple="true"
+                      required="#{bindings.IsNew.hints.mandatory}"
+                      columns="#{bindings.IsNew.hints.displayWidth}"
+                      maximumLength="#{bindings.IsNew.hints.precision}"
+                      shortDesc="#{bindings.IsNew.hints.tooltip}" id="it46">
+          <f:validator binding="#{bindings.IsNew.validator}"/>
+        </af:inputText>-->
+        <af:panelGroupLayout id="pgl21" layout="horizontal" 
+                               >
+            <af:commandButton text="Additional Components" id="cb1"
+                              visible="false"></af:commandButton>
+            <af:spacer width="10" height="10" id="s2"/>
+            <af:commandButton text="Amounts Summary" id="cb2" immediate="true"
+                              disabled="#{bindings.IsNew.inputValue ne 'N'}">
+            <af:showPopupBehavior popupId="p2"/>
+          </af:commandButton>
+            <af:spacer width="10" height="10" id="s3"/>
+         
+            <af:commandButton text="Extend Facility" id="cb3" disabled="#{bindings.IsNew.inputValue ne 'N'}">
+           <af:showPopupBehavior popupId="p122" triggerType="action"
+                                  />
+            </af:commandButton>
+            <af:spacer width="10" height="10" id="s4"/>
+            <af:commandButton text="Syndication Banks" id="cb4" immediate="true" disabled="#{bindings.IsNew.inputValue ne 'N'}">
+            <af:showPopupBehavior popupId="p1" triggerType="action"
+                                  />
+                                  </af:commandButton>
+            <af:spacer width="10" height="10" id="s8"/>
+        <!--  <af:commandButton actionListener="#{bindings.CreateInsert1.execute}"
+                            text="CreateTableRow"
+                            disabled="#{!bindings.CreateInsert1.enabled}"
+                            id="cb7" immediate="true"/>-->
+          <af:commandButton text="Save Changes" id="cb10"
+                            actionListener="#{viewScope.bankfacilitybean.saveFacility}" immediate="true" action="return" disabled="#{bindings.IsComplete.inputValue ne 'Y'}">
+                <af:setPropertyListener from="edit" type="action"
+                                        to="#{pageFlowScope.mode}"/>
+                                        </af:commandButton>
+                <af:spacer width="10" height="10" id="s9"/>
+              <af:commandButton 
+                              text="New Facility"
+                              disabled="#{!bindings.CreateInsert.enabled}"
+                              id="cb5" action="return">
+                              <af:setPropertyListener from="create" type="action"
+                                        to="#{pageFlowScope.mode}"/>
+                                       
+                              </af:commandButton>
+
+        </af:panelGroupLayout>
+           <af:popup id="p122" autoCancel="disabled"
+                     contentDelivery="lazyUncached"
+                     popupCanceledListener="#{viewScope.bankfacilitybean.facilityAmendPopupCancelLstnr}"
+                     popupFetchListener="#{viewScope.bankfacilitybean.facilityAmendPopupFetchlLstnr}">
+              <af:dialog id="d2" type="none" inlineStyle="width:800px;">
+                <af:panelGroupLayout id="pgl51" layout="vertical"
+                                    styleClass="AFStretchWidth">
+                  
+                  <af:panelBox id="pb3" showDisclosure="false"
+                       inlineStyle="color:rgb(0,60,180);"
+                       text="Facility Amendments" styleClass="AFStretchWidth">
+            <f:facet name="toolbar"/> 
+             <af:panelGroupLayout id="pgl22" layout="horizontal" styleClass="AFStretchWidth">
+              <af:panelGroupLayout id="pgl23" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:10px;">
+                    <af:panelCollection id="pc5" styleClass="AFStretchWidth">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar">
+                        
+                          <af:toolbar id="t10">
+                            <af:commandToolbarButton text="Add New" id="ctb5"   actionListener="#{bindings.CreateInsert5.execute}"/>
+                          </af:toolbar>
+                          <!--af:commandButton actionListener="#{bindings.CreateInsert5.execute}"
+                                            text="CreateInsert5"
+                                            
+                                            id="cb6"/-->
+                        
+                      </f:facet>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.FacilityExtnVO21.collectionModel}"
+                                var="row"
+                                rows="#{bindings.FacilityExtnVO21.rangeSize}"
+                                emptyText="#{bindings.FacilityExtnVO21.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.FacilityExtnVO21.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.FacilityExtnVO21Query.queryDescriptor}"
+                                queryListener="#{bindings.FacilityExtnVO21Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.FacilityExtnVO21.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.FacilityExtnVO21.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t2"
+                                partialTriggers="::ctb5"
+                                styleClass="AFStretchWidth"
+                                columnStretching="column:c29" immediate="true">
+                        <af:column sortProperty="#{bindings.FacilityExtnVO21.hints.FacilityType.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="Facility Type" id="c29">
+                         <!-- <af:inputText value="#{row.bindings.FacilityType.inputValue}"
+                                        label="#{bindings.FacilityExtnVO21.hints.FacilityType.label}"
+                                        required="#{bindings.FacilityExtnVO21.hints.FacilityType.mandatory}"
+                                        columns="#{bindings.FacilityExtnVO21.hints.FacilityType.displayWidth}"
+                                        maximumLength="#{bindings.FacilityExtnVO21.hints.FacilityType.precision}"
+                                        shortDesc="#{bindings.FacilityExtnVO21.hints.FacilityType.tooltip}"
+                                        id="it5"
+                                        autoSubmit="true">
+                            <f:validator binding="#{row.bindings.FacilityType.validator}"/>
+                          </af:inputText>-->
+                          
+                            <af:selectOneChoice id="soc14"
+                                             
+                                              value="#{row.bindings.FacilityType.inputValue}"
+                                              autoSubmit="true" immediate="true">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.facilityList}"
+                                           id="si14"/>
+                          </af:selectOneChoice>
+                          
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilityExtnVO21.hints.FacilityDate.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="Facility Date" id="c9">
+                          <f:facet name="filter">
+                            <af:inputDate value="#{vs.filterCriteria.FacilityDate}"
+                                          id="id1"/>
+                          </f:facet>
+                          <af:inputDate value="#{row.bindings.FacilityDate.inputValue}"
+                                        label="#{bindings.FacilityExtnVO21.hints.FacilityDate.label}"
+                                        required="#{bindings.FacilityExtnVO21.hints.FacilityDate.mandatory}"
+                                        shortDesc="#{bindings.FacilityExtnVO21.hints.FacilityDate.tooltip}"
+                                        id="id3"
+                                        autoSubmit="true"
+                                        valueChangeListener="#{viewScope.bankfacilitybean.amendmntFacDateVcl}"
+                                        binding="#{viewScope.bankfacilitybean.amendFacDateBind}">
+                            <f:validator binding="#{row.bindings.FacilityDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.FacilityExtnVO21.hints.FacilityDate.format}"/>
+                          </af:inputDate>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilityExtnVO21.hints.ExpiryDate.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="Expiry Date" id="c5">
+                          <f:facet name="filter">
+                            <af:inputDate value="#{vs.filterCriteria.ExpiryDate}"
+                                          id="id7"/>
+                          </f:facet>
+                          <af:inputDate value="#{row.bindings.ExpiryDate.inputValue}"
+                                        label="#{bindings.FacilityExtnVO21.hints.ExpiryDate.label}"
+                                        required="#{bindings.FacilityExtnVO21.hints.ExpiryDate.mandatory}"
+                                        shortDesc="#{bindings.FacilityExtnVO21.hints.ExpiryDate.tooltip}"
+                                        id="id2" autoSubmit="true"
+                                        binding="#{viewScope.bankfacilitybean.amendExpDateBind}"
+                                        valueChangeListener="#{viewScope.bankfacilitybean.amendmntExpDateVcl}">
+                            <f:validator binding="#{row.bindings.ExpiryDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.FacilityExtnVO21.hints.ExpiryDate.format}"/>
+                          </af:inputDate>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilityExtnVO21.hints.Amount.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FacilityExtnVO21.hints.Amount.label}"
+                                   id="c6">
+                          <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                        label="#{bindings.FacilityExtnVO21.hints.Amount.label}"
+                                        required="#{bindings.FacilityExtnVO21.hints.Amount.mandatory}"
+                                        columns="#{bindings.FacilityExtnVO21.hints.Amount.displayWidth}"
+                                        maximumLength="#{bindings.FacilityExtnVO21.hints.Amount.precision}"
+                                        shortDesc="#{bindings.FacilityExtnVO21.hints.Amount.tooltip}"
+                                        id="it3" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.Amount.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilityExtnVO21.hints.Id.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FacilityExtnVO21.hints.Id.label}"
+                                   id="c7" rendered="false">
+                          <af:inputText value="#{row.bindings.Id.inputValue}"
+                                        label="#{bindings.FacilityExtnVO21.hints.Id.label}"
+                                        required="#{bindings.FacilityExtnVO21.hints.Id.mandatory}"
+                                        columns="#{bindings.FacilityExtnVO21.hints.Id.displayWidth}"
+                                        maximumLength="#{bindings.FacilityExtnVO21.hints.Id.precision}"
+                                        shortDesc="#{bindings.FacilityExtnVO21.hints.Id.tooltip}"
+                                        id="it2"
+                                        >
+                            <f:validator binding="#{row.bindings.Id.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.FacilityExtnVO21.hints.Id.format}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilityExtnVO21.hints.TxnId.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FacilityExtnVO21.hints.TxnId.label}"
+                                   id="c8" rendered="false">
+                          <af:inputText value="#{row.bindings.TxnId.inputValue}"
+                                        label="#{bindings.FacilityExtnVO21.hints.TxnId.label}"
+                                        required="#{bindings.FacilityExtnVO21.hints.TxnId.mandatory}"
+                                        columns="#{bindings.FacilityExtnVO21.hints.TxnId.displayWidth}"
+                                        maximumLength="#{bindings.FacilityExtnVO21.hints.TxnId.precision}"
+                                        shortDesc="#{bindings.FacilityExtnVO21.hints.TxnId.tooltip}"
+                                        id="it4"
+                                        >
+                            <f:validator binding="#{row.bindings.TxnId.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.FacilityExtnVO21.hints.TxnId.format}"/>
+                          </af:inputText>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <!--af:panelGroupLayout layout="horizontal">
+                    <af:outputText value="TOTAL  " id="ot11"
+                                   inlineStyle="font-weight:bold;"/>
+                                   </af:panelGroupLayout>
+                      </af:panelGroupLayout-->
+            </af:panelGroupLayout>
+            </af:panelGroupLayout>
+             </af:panelBox>
+           
+                </af:panelGroupLayout>
+                
+              </af:dialog>
+              
+            </af:popup>
+           <af:popup id="p1" autoCancel="disabled"
+                     popupFetchListener="#{viewScope.bankfacilitybean.facilityPopupFetchLsnr}"
+                     contentDelivery="lazyUncached">
+              <af:dialog id="d1" type="none" >
+                <af:panelGroupLayout id="pgl24" layout="vertical"
+                                     inlineStyle="width:21cm; height:10cm;">
+                  
+                  <af:panelBox id="pb4" showDisclosure="false"
+                       inlineStyle="color:rgb(0,60,180); width:20cm; height:9.85cm;"
+                       text="Syndication Banks">
+            <f:facet name="toolbar"/> 
+             <af:panelGroupLayout id="pgl25" layout="horizontal">
+              <af:panelGroupLayout id="pgl26" layout="vertical"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:10px;">
+                    <!--    <af:panelBox id="pb7" showDisclosure="false"
+                       inlineStyle="color:rgb(0,60,180); width:10cm; height:7.85cm;"
+                       text="Facility Type">
+                      <af:selectOneRadio label="" id="sor2">
+                          <af:selectItem label="Letter of Credit-Sight" value="LC"
+                                         id="si14"/>
+                          <af:selectItem label="Letter of Credit-Deferred" value="LG"
+                                         id="si15"/>
+                          <af:selectItem label="Direct Transfer/Payment Financing" value="STF"
+                                         id="si16"/>
+                          <af:selectItem label="Advance Payment Guarantee Issued" value="STF"
+                                         id="si145"/>
+                          <af:selectItem label="Advance Payment Guarantee Received" value="STF"
+                                         id="si146"/>
+                          <af:selectItem label="Bid Bond Issued" value="STF"
+                                         id="si17"/>
+                          <af:selectItem label="General Guarantee Issued" value="STF"
+                                         id="si18"/>
+                          <af:selectItem label="Performance Guarantee Issued" value="STF"
+                                         id="si119"/>
+                          <af:selectItem label="Performance Guarantee Received" value="STF"
+                                         id="si110"/>
+                             <af:selectItem label="Letter of Credit Financing" value="STF"
+                                         id="si111"/>
+                                         <af:selectItem label="Direct Transfer/Payment Financing" value="STF"
+                                         id="si112"/>
+                                         <af:selectItem label="Interim Payment Certificate (IPC) Financing" value="STF"
+                                         id="si113"/>
+                          
+                          <af:selectItem label="OverDraft" value="OverDraft"
+                                         id="si212"/>
+                        </af:selectOneRadio>
+                        </af:panelBox>-->
+                      </af:panelGroupLayout>
+                      <af:panelGroupLayout id="pgl27" layout="horizontal"
+                                           inlineStyle="margin:20.0px;">
+                   <!--   <af:table var="row" rowBandingInterval="0" id="t3" styleClass="AFStretchWidth">
+                          <af:column sortable="false" headerText="Bank Name"
+                                     id="c10">
+                            <af:outputText value="#{row.col1}" id="ot12"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="%"
+                                     id="c11">
+                            <af:outputText value="#{row.col2}" id="ot13"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Amount"
+                                     id="c12">
+                            <af:outputText value="#{row.col3}" id="ot14"/>
+                          </af:column>
+                          
+                        </af:table>-->
+                    <af:panelCollection id="pc4" inlineStyle="width:681px;">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar">
+                        <af:toolbar id="t8">
+                          <af:commandToolbarButton text="Add New" actionListener="#{bindings.CreateInsert2.execute}"
+                                                   id="ctb3" immediate="true"/>
+                        </af:toolbar>
+                      </f:facet>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.FacilitySynBankVO2.collectionModel}"
+                                var="row"
+                                rows="#{bindings.FacilitySynBankVO2.rangeSize}"
+                                emptyText="#{bindings.FacilitySynBankVO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.FacilitySynBankVO2.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.FacilitySynBankVO2Query.queryDescriptor}"
+                                queryListener="#{bindings.FacilitySynBankVO2Query.processQuery}"
+                                filterVisible="true" varStatus="vs" id="t3"
+                                width="680" partialTriggers="::ctb3"
+                                columnStretching="column:c16"
+                                selectedRowKeys="#{bindings.FacilitySynBankVO2.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.FacilitySynBankVO2.collectionModel.makeCurrent}"
+                                rowSelection="single"
+                                binding="#{viewScope.bankfacilitybean.syndctnTable}">
+                        <af:column sortProperty="#{bindings.FacilitySynBankVO2.hints.FacilityType.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="Facility Type" id="c16">
+                          <!-- <af:inputText value="#{row.bindings.FacilityType.inputValue}"
+                                      label="#{bindings.FacilitySynBankVO2.hints.FacilityType.label}"
+                                      required="#{bindings.FacilitySynBankVO2.hints.FacilityType.mandatory}"
+                                      columns="#{bindings.FacilitySynBankVO2.hints.FacilityType.displayWidth}"
+                                      maximumLength="#{bindings.FacilitySynBankVO2.hints.FacilityType.precision}"
+                                      shortDesc="#{bindings.FacilitySynBankVO2.hints.FacilityType.tooltip}"
+                                      id="it26">
+                          <f:validator binding="#{row.bindings.FacilityType.validator}"/>
+                        </af:inputText>-->
+                          <af:selectOneChoice id="soc3"
+                                              value="#{row.bindings.FacilityType.inputValue}"
+                                              autoSubmit="true" immediate="true">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.facilityList}"
+                                           id="si3"/>
+                          </af:selectOneChoice>
+                          <f:facet name="filter">
+                            <af:panelGroupLayout id="pgl20" layout="vertical">
+                              <af:outputText value="Select Facility Type"
+                                             id="ot1"
+                                             inlineStyle="color:Blue;"/>
+                              <af:selectOneChoice id="soc2"
+                                                  value="#{vs.filterCriteria.FacilityType}"
+                                                  autoSubmit="true">
+                                <f:selectItems value="#{viewScope.bankfacilitybean.facilityList}"
+                                               id="si2"/>
+                              </af:selectOneChoice>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilitySynBankVO2.hints.Id.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FacilitySynBankVO2.hints.Id.label}"
+                                   id="c14" rendered="false">
+                          <af:inputText value="#{row.bindings.Id.inputValue}"
+                                        label="#{bindings.FacilitySynBankVO2.hints.Id.label}"
+                                        required="#{bindings.FacilitySynBankVO2.hints.Id.mandatory}"
+                                        columns="#{bindings.FacilitySynBankVO2.hints.Id.displayWidth}"
+                                        maximumLength="#{bindings.FacilitySynBankVO2.hints.Id.precision}"
+                                        shortDesc="#{bindings.FacilitySynBankVO2.hints.Id.tooltip}"
+                                        id="it27" autoSubmit="true"
+                                        rendered="false">
+                            <f:validator binding="#{row.bindings.Id.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.FacilitySynBankVO2.hints.Id.format}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilitySynBankVO2.hints.TxnId.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FacilitySynBankVO2.hints.TxnId.label}"
+                                   id="c10" rendered="false">
+                          <af:inputText value="#{row.bindings.TxnId.inputValue}"
+                                        label="#{bindings.FacilitySynBankVO2.hints.TxnId.label}"
+                                        required="#{bindings.FacilitySynBankVO2.hints.TxnId.mandatory}"
+                                        columns="#{bindings.FacilitySynBankVO2.hints.TxnId.displayWidth}"
+                                        maximumLength="#{bindings.FacilitySynBankVO2.hints.TxnId.precision}"
+                                        shortDesc="#{bindings.FacilitySynBankVO2.hints.TxnId.tooltip}"
+                                        id="it11" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.TxnId.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.FacilitySynBankVO2.hints.TxnId.format}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilitySynBankVO2.hints.BankName.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="Bank Name" id="c11">
+                          <!--<af:inputText value="#{row.bindings.BankName.inputValue}"
+                                        label="#{bindings.FacilitySynBankVO2.hints.BankName.label}"
+                                        required="#{bindings.FacilitySynBankVO2.hints.BankName.mandatory}"
+                                        columns="#{bindings.FacilitySynBankVO2.hints.BankName.displayWidth}"
+                                        maximumLength="#{bindings.FacilitySynBankVO2.hints.BankName.precision}"
+                                        shortDesc="#{bindings.FacilitySynBankVO2.hints.BankName.tooltip}"
+                                        id="it12" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.BankName.validator}"/>
+                          </af:inputText>-->
+                          
+                          <af:selectOneChoice id="soc12"
+                                              value="#{row.bindings.BankName.inputValue}"
+                                              autoSubmit="true" immediate="true"
+                                  
+                                    contentStyle="width:100px">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.bankList}"
+                                           id="si12"/>
+                          </af:selectOneChoice>
+                          
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilitySynBankVO2.hints.Percentage.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FacilitySynBankVO2.hints.Percentage.label}"
+                                   id="c15">
+                          <af:inputText value="#{row.bindings.Percentage.inputValue}"
+                                        label="#{bindings.FacilitySynBankVO2.hints.Percentage.label}"
+                                        required="#{bindings.FacilitySynBankVO2.hints.Percentage.mandatory}"
+                                        columns="#{bindings.FacilitySynBankVO2.hints.Percentage.displayWidth}"
+                                        maximumLength="#{bindings.FacilitySynBankVO2.hints.Percentage.precision}"
+                                        shortDesc="#{bindings.FacilitySynBankVO2.hints.Percentage.tooltip}"
+                                        id="it25" autoSubmit="true"
+                                        valueChangeListener="#{viewScope.bankfacilitybean.sydnctnPercntgeVcl}"
+                                        binding="#{viewScope.bankfacilitybean.prcntgeBind}">
+                            <f:validator binding="#{row.bindings.Percentage.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.FacilitySynBankVO2.hints.Percentage.format}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FacilitySynBankVO2.hints.Amount.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FacilitySynBankVO2.hints.Amount.label}"
+                                   id="c12">
+                          <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                        label="#{bindings.FacilitySynBankVO2.hints.Amount.label}"
+                                        required="#{bindings.FacilitySynBankVO2.hints.Amount.mandatory}"
+                                        columns="#{bindings.FacilitySynBankVO2.hints.Amount.displayWidth}"
+                                        maximumLength="#{bindings.FacilitySynBankVO2.hints.Amount.precision}"
+                                        shortDesc="#{bindings.FacilitySynBankVO2.hints.Amount.tooltip}"
+                                        id="it10" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.Amount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.FacilitySynBankVO2.hints.Amount.format}"/>
+                          </af:inputText>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                   <!-- <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                      text="Commit"
+                                     
+                                      id="cb8"/>
+                    <af:commandButton actionListener="#{bindings.CreateInsert2.execute}"
+                                      text="CreateInsert2"
+                                      disabled="#{!bindings.CreateInsert2.enabled}"
+                                      id="cb9"/>-->
+                  </af:panelGroupLayout>
+            </af:panelGroupLayout>
+             </af:panelBox>
+           
+                </af:panelGroupLayout>
+                
+              </af:dialog>
+              
+            </af:popup>
+        <af:popup id="p2" contentDelivery="lazyUncached"
+                  popupFetchListener="#{viewScope.bankfacilitybean.facilityAmtSummPopupFetch}">
+          <af:dialog id="d3" type="none" styleClass="AFStretchWidth">
+           
+          
+   
+          <af:panelGroupLayout id="pgl9" layout="horizontal"
+                               >
+            <af:panelGroupLayout id="pgl18" layout="horizontal">
+            <af:panelBox text="Components Summary" id="pb5"
+                       showDisclosure="false">
+            <f:facet name="toolbar"/>
+                  <af:panelCollection id="pc1" >
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t6">
+                        <af:commandToolbarButton text="Add New"
+                                                 id="ctb1" actionListener="#{bindings.CreateInsert3.execute}"/>
+                        <af:spacer width="10"  id="s10"/>
+                       
+                      </af:toolbar>
+                    </f:facet>
+                    <f:facet name="statusbar"/>
+                  
+                  <af:table value="#{bindings.FacilityAmtSumVO1.collectionModel}"
+                      var="row" rows="#{bindings.FacilityAmtSumVO1.rangeSize}"
+                      emptyText="#{bindings.FacilityAmtSumVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.FacilityAmtSumVO1.rangeSize}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.FacilityAmtSumVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.FacilityAmtSumVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t5"
+                      partialTriggers="::ctb1 :::pc2:ctb2 :::cb2" immediate="true"
+                            columnStretching="column:c27">
+              <af:column sortProperty="#{bindings.FacilityAmtSumVO1.hints.CompId.name}"
+                         sortable="true"
+                         headerText="#{bindings.FacilityAmtSumVO1.hints.CompId.label}"
+                         id="c23" rendered="false">
+                <af:inputText value="#{row.bindings.CompId.inputValue}"
+                              label="#{bindings.FacilityAmtSumVO1.hints.CompId.label}"
+                              required="#{bindings.FacilityAmtSumVO1.hints.CompId.mandatory}"
+                              columns="#{bindings.FacilityAmtSumVO1.hints.CompId.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumVO1.hints.CompId.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumVO1.hints.CompId.tooltip}"
+                              id="it34" autoSubmit="true">
+                  <f:validator binding="#{row.bindings.CompId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumVO1.hints.CompId.format}"/>
+                </af:inputText>
+                
+              </af:column>
+                      <af:column headerText="#{bindings.FacilityAmtSumVO1.hints.TxnId.label}"
+                                 id="c28" rendered="false">
+                        <af:inputText value="#{row.bindings.TxnId.inputValue}"
+                                      label="#{bindings.FacilityAmtSumVO1.hints.TxnId.label}"
+                                      required="#{bindings.FacilityAmtSumVO1.hints.TxnId.mandatory}"
+                                      columns="#{bindings.FacilityAmtSumVO1.hints.TxnId.displayWidth}"
+                                      maximumLength="#{bindings.FacilityAmtSumVO1.hints.TxnId.precision}"
+                                      shortDesc="#{bindings.FacilityAmtSumVO1.hints.TxnId.tooltip}"
+                                      id="it37" autoSubmit="true">
+                          <f:validator binding="#{row.bindings.TxnId.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.FacilityAmtSumVO1.hints.TxnId.format}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.FacilityAmtSumVO1.hints.Component1.name}"
+                         sortable="true" headerText="Component" id="c27">
+               <!-- <af:inputText value="#{row.bindings.Component1.inputValue}"
+                              label="Component"
+                              required="#{bindings.FacilityAmtSumVO1.hints.Component1.mandatory}"
+                              columns="#{bindings.FacilityAmtSumVO1.hints.Component1.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumVO1.hints.Component1.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumVO1.hints.Component1.tooltip}"
+                              id="it33" autoSubmit="true" >
+                  <f:validator binding="#{row.bindings.Component1.validator}"/>
+                </af:inputText>-->
+                <af:selectOneChoice id="soc4"
+                                              value="#{row.bindings.Component1.inputValue}"
+                                              autoSubmit="true" immediate="true">
+                            <f:selectItems value="#{viewScope.bankfacilitybean.facilityList}"
+                                           id="si4"/>
+                          </af:selectOneChoice>
+                
+              </af:column>
+              <af:column sortProperty="#{bindings.FacilityAmtSumVO1.hints.UsedAmount.name}"
+                         sortable="true" headerText="Used Amount" id="c26">
+                <af:inputText value="#{row.bindings.UsedAmount.inputValue}"
+                              label="#{bindings.FacilityAmtSumVO1.hints.UsedAmount.label}"
+                              required="#{bindings.FacilityAmtSumVO1.hints.UsedAmount.mandatory}"
+                              columns="#{bindings.FacilityAmtSumVO1.hints.UsedAmount.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumVO1.hints.UsedAmount.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumVO1.hints.UsedAmount.tooltip}"
+                              id="it32" autoSubmit="true" disabled="true">
+                  <f:validator binding="#{row.bindings.UsedAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumVO1.hints.UsedAmount.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.FacilityAmtSumVO1.hints.RecoveredAmount.name}"
+                         sortable="true" headerText="Recovered Amount" id="c24">
+                <af:inputText value="#{row.bindings.RecoveredAmount.inputValue}"
+                              label="#{bindings.FacilityAmtSumVO1.hints.RecoveredAmount.label}"
+                              required="#{bindings.FacilityAmtSumVO1.hints.RecoveredAmount.mandatory}"
+                              columns="#{bindings.FacilityAmtSumVO1.hints.RecoveredAmount.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumVO1.hints.RecoveredAmount.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumVO1.hints.RecoveredAmount.tooltip}"
+                              id="it36" autoSubmit="true" disabled="true">
+                  <f:validator binding="#{row.bindings.RecoveredAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumVO1.hints.RecoveredAmount.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.FacilityAmtSumVO1.hints.RemainingAmount.name}"
+                         sortable="true" headerText="Remaining Amount" id="c25">
+                <af:inputText value="#{row.bindings.RemainingAmount.inputValue}"
+                              label="#{bindings.FacilityAmtSumVO1.hints.RemainingAmount.label}"
+                              required="#{bindings.FacilityAmtSumVO1.hints.RemainingAmount.mandatory}"
+                              columns="#{bindings.FacilityAmtSumVO1.hints.RemainingAmount.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumVO1.hints.RemainingAmount.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumVO1.hints.RemainingAmount.tooltip}"
+                              id="it35" autoSubmit="true" disabled="true">
+                  <f:validator binding="#{row.bindings.RemainingAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumVO1.hints.RemainingAmount.format}"/>
+                </af:inputText>
+              </af:column>
+             
+            </af:table>
+                </af:panelCollection>
+                 
+                </af:panelBox>
+               
+          </af:panelGroupLayout>
+      
+          <af:panelGroupLayout id="pgl19" layout="horizontal"
+                               >
+          <af:panelBox text="Component Details" id="pb7" showDisclosure="false"
+                       >
+            <f:facet name="toolbar"/>
+             <af:panelCollection id="pc2">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t7">
+                        <af:commandToolbarButton text="Add New"
+                                                 id="ctb2" actionListener="#{bindings.CreateInsert4.execute}" immediate="true">
+                     </af:commandToolbarButton>
+                     </af:toolbar>
+                    </f:facet>
+                    <f:facet name="statusbar"/>
+            <af:table value="#{bindings.FacilityAmtSumDetVO2.collectionModel}"
+                      var="row"
+                      rows="#{bindings.FacilityAmtSumDetVO2.rangeSize}"
+                      emptyText="#{bindings.FacilityAmtSumDetVO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.FacilityAmtSumDetVO2.rangeSize}"
+                      rowBandingInterval="0" id="t4"
+                      partialTriggers=" ::pc1:t5 ::ctb2" immediate="true"
+                      columnStretching="column:c17">
+              <af:column sortProperty="#{bindings.FacilityAmtSumDetVO2.hints.Component1.name}"
+                         sortable="true" headerText="Component" id="c17">
+                <af:inputText value="#{row.bindings.Component1.inputValue}"
+                              label="Component"
+                              required="#{bindings.FacilityAmtSumDetVO2.hints.Component1.mandatory}"
+                              columns="#{bindings.FacilityAmtSumDetVO2.hints.Component1.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumDetVO2.hints.Component1.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumDetVO2.hints.Component1.tooltip}"
+                              id="it8" autoSubmit="true">
+                  <f:validator binding="#{row.bindings.Component1.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.FacilityAmtSumDetVO2.hints.UsedAmount.name}"
+                         sortable="true" headerText="Used Amount" id="c21">
+                <af:inputText value="#{row.bindings.UsedAmount.inputValue}"
+                              label="#{bindings.FacilityAmtSumDetVO2.hints.UsedAmount.label}"
+                              required="#{bindings.FacilityAmtSumDetVO2.hints.UsedAmount.mandatory}"
+                              columns="#{bindings.FacilityAmtSumDetVO2.hints.UsedAmount.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumDetVO2.hints.UsedAmount.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumDetVO2.hints.UsedAmount.tooltip}"
+                              id="it30" autoSubmit="true">
+                  <f:validator binding="#{row.bindings.UsedAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumDetVO2.hints.UsedAmount.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.FacilityAmtSumDetVO2.hints.RecoveredAmount.name}"
+                         sortable="true" headerText="Recovered Amount" id="c18">
+                <af:inputText value="#{row.bindings.RecoveredAmount.inputValue}"
+                              label="#{bindings.FacilityAmtSumDetVO2.hints.RecoveredAmount.label}"
+                              required="#{bindings.FacilityAmtSumDetVO2.hints.RecoveredAmount.mandatory}"
+                              columns="#{bindings.FacilityAmtSumDetVO2.hints.RecoveredAmount.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumDetVO2.hints.RecoveredAmount.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumDetVO2.hints.RecoveredAmount.tooltip}"
+                              id="it26" autoSubmit="true">
+                  <f:validator binding="#{row.bindings.RecoveredAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumDetVO2.hints.RecoveredAmount.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.FacilityAmtSumDetVO2.hints.RemainingAmount.name}"
+                         sortable="true" headerText="Remaining Amount" id="c22">
+                <af:inputText value="#{row.bindings.RemainingAmount.inputValue}"
+                              label="#{bindings.FacilityAmtSumDetVO2.hints.RemainingAmount.label}"
+                              required="#{bindings.FacilityAmtSumDetVO2.hints.RemainingAmount.mandatory}"
+                              columns="#{bindings.FacilityAmtSumDetVO2.hints.RemainingAmount.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumDetVO2.hints.RemainingAmount.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumDetVO2.hints.RemainingAmount.tooltip}"
+                              id="it28" autoSubmit="true">
+                  <f:validator binding="#{row.bindings.RemainingAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumDetVO2.hints.RemainingAmount.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.FacilityAmtSumDetVO2.hints.Id.name}"
+                         sortable="true"
+                         headerText="#{bindings.FacilityAmtSumDetVO2.hints.Id.label}"
+                         id="c20" rendered="false">
+                <af:inputText value="#{row.bindings.Id.inputValue}"
+                              label="#{bindings.FacilityAmtSumDetVO2.hints.Id.label}"
+                              required="#{bindings.FacilityAmtSumDetVO2.hints.Id.mandatory}"
+                              columns="#{bindings.FacilityAmtSumDetVO2.hints.Id.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumDetVO2.hints.Id.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumDetVO2.hints.Id.tooltip}"
+                              id="it31" autoSubmit="true">
+                  <f:validator binding="#{row.bindings.Id.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumDetVO2.hints.Id.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.FacilityAmtSumDetVO2.hints.CompId.name}"
+                         sortable="true"
+                         headerText="#{bindings.FacilityAmtSumDetVO2.hints.CompId.label}"
+                         id="c19" rendered="false">
+                <af:inputText value="#{row.bindings.CompId.inputValue}"
+                              label="#{bindings.FacilityAmtSumDetVO2.hints.CompId.label}"
+                              required="#{bindings.FacilityAmtSumDetVO2.hints.CompId.mandatory}"
+                              columns="#{bindings.FacilityAmtSumDetVO2.hints.CompId.displayWidth}"
+                              maximumLength="#{bindings.FacilityAmtSumDetVO2.hints.CompId.precision}"
+                              shortDesc="#{bindings.FacilityAmtSumDetVO2.hints.CompId.tooltip}"
+                              id="it29" autoSubmit="true">
+                  <f:validator binding="#{row.bindings.CompId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.FacilityAmtSumDetVO2.hints.CompId.format}"/>
+                </af:inputText>
+              </af:column>
+            </af:table>
+            </af:panelCollection>
+                 
+                  <!--af:commandButton actionListener="#{bindings.Commit.execute}"
+                                    text="Commit"
+                                    disabled="#{!bindings.Commit.enabled}"
+                                    id="cb13"/-->
+                </af:panelBox>
+         </af:panelGroupLayout>
+         </af:panelGroupLayout>
+          </af:dialog>
+          
+        </af:popup>
+        <af:outputText value="outputText1" id="ot2" visible="false"
+                       binding="#{viewScope.bankfacilitybean.hiddenOutputBind}"/>
+                       <af:outputText value="outputText1" id="ot3" visible="false"
+                       binding="#{viewScope.bankfacilitybean.hiddenProjectOutputBind}"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FacilityFinancialVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="FacilityFinancialEO.ID, 
+       FacilityFinancialEO.TXN_ID, 
+       FacilityFinancialEO.AMOUNT_ORG, 
+       FacilityFinancialEO.AMOUNT_EXTD, 
+       FacilityFinancialEO.CREATED_BY, 
+       FacilityFinancialEO.CREATION_DATE, 
+       FacilityFinancialEO.LAST_UPDATED_BY, 
+       FacilityFinancialEO.LAST_UPDATED_DATE, 
+       FacilityFinancialEO.FACILITY_TYPE"
+  FromList="XXX_FSA_FIN_FACILITY_FINANCIAL FacilityFinancialEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="com.in.fsa.VO.FacilityFinancialVORowImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="FacilityTypeBindVar"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[FacilityType]]></TransientExpression>
+  </Variable>
+  <ViewAccessor
+    Name="FacilityLovVo1"
+    ViewObjectName="com.in.fsa.VO.FacilityLovVo"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_FacilityType"
+    ListVOName="FacilityLovVo1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_FacilityType_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="FacilityType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="FacilityFinancialEO"
+    Entity="com.in.fsa.EO.FacilityFinancialEO"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="TxnId"
+    PrecisionRule="true"
+    EntityAttrName="TxnId"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="TXN_ID"/>
+  <ViewAttribute
+    Name="AmountOrg"
+    PrecisionRule="true"
+    EntityAttrName="AmountOrg"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="AMOUNT_ORG"/>
+  <ViewAttribute
+    Name="AmountExtd"
+    PrecisionRule="true"
+    EntityAttrName="AmountExtd"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="AMOUNT_EXTD"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="LAST_UPDATED_DATE"/>
+  <ViewAttribute
+    Name="FacilityType"
+    PrecisionRule="true"
+    EntityAttrName="FacilityType"
+    EntityUsage="FacilityFinancialEO"
+    AliasName="FACILITY_TYPE"
+    LOVName="LOV_FacilityType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+</ViewObject>

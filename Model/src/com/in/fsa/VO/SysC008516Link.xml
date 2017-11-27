@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC008516Link"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  EntityAssociation="com.in.fsa.EO.SysC008516Assoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="FacilityTxnVO"
+    Cardinality="1"
+    Owner="com.in.fsa.VO.FacilityTxnVO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="FacilityTxnVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.in.fsa.VO.FacilityTxnVO.TxnId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="FacilityFinancialVO"
+    Cardinality="-1"
+    Owner="com.in.fsa.VO.FacilityFinancialVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="FacilityFinancialVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.in.fsa.VO.FacilityFinancialVO.TxnId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>
