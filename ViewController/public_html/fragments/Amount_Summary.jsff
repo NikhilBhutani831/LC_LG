@@ -3,7 +3,7 @@
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core"
           xmlns:h="http://java.sun.com/jsf/html">
- <!-- <af:panelStretchLayout id="psl1" startWidth="10px" endWidth="10px"
+  <af:panelStretchLayout id="psl1" startWidth="10px" endWidth="10px"
                          bottomHeight="11px">
     <f:facet name="start">
       <af:panelGroupLayout id="pgl13" layout="vertical" halign="center"
@@ -113,5 +113,5 @@
        
     </f:facet>
    
-  </af:panelStretchLayout>-->
+  </af:panelStretchLayout>
 </jsp:root>
